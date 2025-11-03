@@ -1,5 +1,5 @@
 fastapi==0.104.1
-uvicorn==0.24.0
+uvicorn[standard]==0.24.0
 pydantic==2.5.0
 pydantic[email]==2.5.0
 bcrypt==4.1.1
@@ -9,4 +9,4 @@ nest-asyncio==1.5.8
 langdetect==1.0.9
 deep-translator==1.11.4
 numpy==1.24.3
-pyngrok==7.0.4
+python-dotenv==1.0.0
