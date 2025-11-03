@@ -1,7 +1,3 @@
-!pip install -q fastapi uvicorn bcrypt PyJWT pydantic[email] langdetect deep_translator scikit-learn nest_asyncio pyngrok
-!pip install SpeechRecognition
-!pip install gTTS
-
 import sqlite3
 import bcrypt
 import jwt
@@ -6753,4 +6749,16 @@ def run_server():
     server_thread.join()
 
 if __name__ == "__main__":
-    run_server()
+    import os
+    
+    # Check if running on Hugging Face
+    if os.getenv("SPACE_ID"):
+        # Hugging Face Spaces environment
+        print("\n🚀 Running on Hugging Face Spaces...")
+        from uvicorn import Config, Server
+        config = Config(app=app, host="0.0.0.0", port=7860, log_level="info")
+        server = Server(config=config)
+        server.run()
+    else:
+        # Local development with ngrok
+        run_server()
