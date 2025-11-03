@@ -40,7 +40,8 @@ nest_asyncio.apply()
 
 JWT_EXPIRY_HOURS = 24
 SUPPORTED_LANGUAGES = ['English', 'Hindi']
-DATABASE_NAME = 'health_chatbot_enhanced.db'
+import os
+DATABASE_NAME = os.getenv('DATABASE_NAME', '/app/data/health_chatbot_enhanced.db')
 SECRET_KEY = secrets.token_hex(32)
 
 # Add after JWT_EXPIRY_HOURS
@@ -6784,4 +6785,5 @@ if __name__ == "__main__":
     else:
         # Local development with ngrok
         run_server()
+
 
