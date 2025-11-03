@@ -1,3 +1,6 @@
+
+from typing import List, Dict
+import json
 import sqlite3
 import bcrypt
 import jwt
@@ -23,6 +26,12 @@ import time
 import socket
 from pyngrok import ngrok
 import random
+import warnings
+from io import StringIO, BytesIO
+import csv
+warnings.filterwarnings('ignore')
+
+nest_asyncio.apply()
 
 # --- Configuration ---
 warnings.filterwarnings('ignore')
@@ -6751,10 +6760,23 @@ def run_server():
 if __name__ == "__main__":
     import os
     
-    # Check if running on Hugging Face
+    # Check if running on Hugging Face Spaces
     if os.getenv("SPACE_ID"):
-        # Hugging Face Spaces environment
-        print("\n🚀 Running on Hugging Face Spaces...")
+        # Running on Hugging Face - skip ngrok
+        print("\n" + "="*70)
+        print("🚀 DEPLOYED ON HUGGING FACE SPACES")
+        print("="*70)
+        print("📋 All Features Active:")
+        print("  ✓ Multilingual AI Chatbot")
+        print("  ✓ Health Logger & Analytics")
+        print("  ✓ Wellness Goals & Streaks")
+        print("  ✓ AI Diet & Fitness Plans")
+        print("  ✓ Community Forum")
+        print("  ✓ Meditation Hub")
+        print("  ✓ Challenges & Achievements")
+        print("  ✓ Crisis Detection Support")
+        print("="*70)
+        
         from uvicorn import Config, Server
         config = Config(app=app, host="0.0.0.0", port=7860, log_level="info")
         server = Server(config=config)
@@ -6762,3 +6784,4 @@ if __name__ == "__main__":
     else:
         # Local development with ngrok
         run_server()
+
